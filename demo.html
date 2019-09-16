@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+  </head>
+  <body>
+    <p id="demo">HELLO</p>
+    <p id="demo1" style="display:none">HELLO DEMO1</p>
+    <button type="button" onclick='document.getElementById("demo").innerHTML="Hello World..!"'>Hello world</button>
+    <button type="button" onclick="document.getElementById('demo').innerHTML=Date()">Date</button>
+    <button type="button" onclick="this.innerHTML=Date()">This Date</button>
+    <!-- <div onmousehover="this.style.backgroundColor='red'">myDIV.</div> -->
+    <button type="button" onclick="document.getElementById('demo').style.fontSize='35px'">35px</button>
+    <button type="button" onclick="document.getElementById('demo').style.display='none'">display none</button>
+    <button type="button" onclick="document.getElementById('demo1').style.display='block'">Block</button>
+    <button onclick="myalert()">alert</button>
+    <script>
+      function myalert(){
+        var str =".      !....HELLO WORLD ALERT....!       .";
+        alert(str.trim());
+      }
+    </script>
+    document.setAttribate('')
+
+    <button onclick="document.getElementById('myImage').src='/home/sa02/Desktop/pic_bulbon.gif'">ON</button>
+    <img id="myImage" src="/home/sa02/Desktop/pic_bulboff.gif" style="widtht:100px">
+    <button onclick="document.getElementById('myImage').src='/home/sa02/Desktop/pic_bulboff.gif'">OFF</button>
+
+  </body>
+</html>

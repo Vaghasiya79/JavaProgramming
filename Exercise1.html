@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercise1</title>
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="Exercise1.js">
+  </head>
+  <body>
+    <div class="jumbotron ">
+      <h1 style="text-align:center;"> <b>XYZ SCHOOL</b> </h1>
+    </div>
+    <div>
+      <div class="button" style="text-align: center;">
+      <button type="button" class="btn btn-primary" name="button" id="add_record" onclick="insertRow()">Add Record</button>
+      </div>
+      <table class="table table-hover table-bordered shadow p-4 mb-4 bg-white" style="text-align:center;" id="student_records">
+        <tr>
+          <th>Roll No</th>
+          <th>Student Name</th>
+          <th>Maths</th>
+          <th>Sci</th>
+          <th>Phy</th>
+          <th>Total Marks</th>
+          <th>percentage</th>
+          <th>Action</th>
+        </tr>
+      </table>
+    </div>
+    <div class="container" style="text-align:center;">
+      <table class="table table-hover table-bordered container shadow p-4 mb-4 bg-white" style="text-align:center; width: 500px;">
+        <tr>
+          <th>Total students  :</th>
+          <td id="total_student"></td>
+        </tr>
+        <tr>
+          <th>Max Marks  :</th>
+          <td id="max"></td>
+        </tr>
+        <tr>
+          <th>Min Marks  :</th>
+          <td id="min"></td>
+        </tr>
+        <tr>
+          <th>Avg Marks  :</th>
+          <td id="avg"></td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      var rowNo = 1;
+      function studentTotal(no){
+        math = Number(document.getElementById('math' + no).value);
+        sci = Number(document.getElementById('sci' + no).value);
+        phy = Number(document.getElementById('phy' + no).value);
+        total = math + sci + phy;
+        document.getElementById('total' + no).innerHTML = total;
+        document.getElementById('percentage' + no).innerHTML = (total / 3).toFixed(2) + '%';
+        summary();
+      }
+
+      function summary(){
+        var min = 300, max = 0, total = 0, st, avg = 0;
+        var totals = document.getElementsByClassName("total")
+        var count = totals.length
+        for(var i = 0; i < count; i++){
+          st = Number(totals[i].innerHTML)
+          total += st
+
+          if(max < st){
+            max = st;
+          }
+          if(min > st){
+            min = st;
+          }
+        }
+
+        if(count > 0)
+          avg = total / count;
+        if(count <= 0)
+          min = 0;
+
+        document.getElementById("total_student").innerHTML = count;
+        document.getElementById("max").innerHTML = max;
+        document.getElementById("min").innerHTML = min;
+        document.getElementById("avg").innerHTML = avg.toFixed(2);
+      }
+
+      function insertRow() {
+        var table = document.getElementById("student_records");
+        var row = table.insertRow();
+        row.setAttribute('id', 'student' + rowNo);
+        row.insertCell(0).innerHTML = '<input name="rollNo" style="text-align: center;">';
+        row.insertCell(1).innerHTML = '<input name="name" style="text-align: center;">';
+        row.insertCell(2).innerHTML = '<input name="math" style="text-align: center;" id="math' + rowNo + '" onchange="studentTotal(' + rowNo + ')">';
+        row.insertCell(3).innerHTML = '<input name="sci" style="text-align: center;" id="sci' + rowNo + '" onchange="studentTotal(' + rowNo + ')">';
+        row.insertCell(4).innerHTML = '<input name="phy" style="text-align: center;" id="phy' + rowNo + '" onchange="studentTotal(' + rowNo + ')">';
+        var totalTd = row.insertCell(5);
+        totalTd.setAttribute('id', 'total' + rowNo);
+        totalTd.setAttribute('class', 'total');
+        var precision = row.insertCell(6);
+        precision.setAttribute('id', 'percentage' + rowNo);
+        row.insertCell(7).innerHTML = '<button type="button" class="delete btn btn-danger" onclick="deleteRow(' + rowNo + ')">Delete</button>';
+        rowNo++;
+        summary();
+      }
+
+      function deleteRow(no) {
+        var index = document.getElementById("student" + no).rowIndex;
+        document.getElementById("student_records").deleteRow(index);
+        summary();
+      }
+
+    </script>
+  </body>
+</html>

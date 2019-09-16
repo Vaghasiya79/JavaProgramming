@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercise2</title>
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="Exercise2.js">
+  </head>
+  <body>
+    <div class="container shadow p-4 mb-4 bg-white" style="text-align: center;">
+      <table class="table container shadow p-4 mb-4 bg-white">
+      <tr>
+        <th>Num1</th>
+        <th></th>
+        <th>Num2</th>
+        <th>=</th>
+        <th>RESULT</th>
+      </tr>
+      <tr>
+        <td><input type="text" id="num1" placeholder="Enter Number 1" class="text-center"></td>
+        <td id="onchange"></td>
+        <td><input type="text" id="num2" placeholder="Enter Number 2" class="text-center"></td>
+        <td>=</td>
+        <td><input type="text" id="result" placeholder="Total Number" class="text-center"></td>
+      </tr>
+
+      </table>
+      <div>
+        <button type="button" class="btn btn-primary px-5" onclick="add()"> + </button>
+        <button type="button" class="btn btn-success px-5" onclick="subtract()"> - </button>
+        <button type="button" class="btn btn-danger px-5" onclick="divide()"> / </button>
+        <button type="button" class="btn btn-warning px-5" onclick="multiply()"> * </button>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function add(){
+        num1=Number(document.getElementById("num1").value);
+        num2=Number(document.getElementById("num2").value);
+        result=num1+num2;
+        document.getElementById('result').value =result;
+        document.getElementById("result").style.color = "blue";
+        document.getElementById("onchange").innerHTML = "+";
+      }
+      function subtract(){
+        num1=Number(document.getElementById("num1").value);
+        num2=Number(document.getElementById("num2").value);
+        result=num1-num2;
+        document.getElementById('result').value =result;
+        document.getElementById("result").style.color = "Green";
+        document.getElementById("onchange").innerHTML = "-";
+      }
+      function divide(){
+        num1=Number(document.getElementById("num1").value);
+        num2=Number(document.getElementById("num2").value);
+        result=num1/num2;
+        document.getElementById('result').value =result;
+        document.getElementById("result").style.color = "Red";
+        document.getElementById("onchange").innerHTML = "/";
+      }
+      function multiply(){
+        num1=Number(document.getElementById("num1").value);
+        num2=Number(document.getElementById("num2").value);
+        result=num1*num2;
+        document.getElementById('result').value =result;
+        document.getElementById("result").style.color = "Yellow";
+        document.getElementById("onchange").innerHTML = "*";
+      }
+    </script>
+
+  </body>
+</html>
